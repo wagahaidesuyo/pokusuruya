@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>っぽくする屋。| 店舗・個人サービスの見せ方改善</title>
+<meta name="description" content="店舗・個人サービスのSNS、チラシ、メニュー表、料金表を選ばれる見せ方に整えるデザイン伴走サービスです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #313329;
+  --muted: #6f7167;
+  --paper: #f5f3ec;
+  --line: #d9d9cd;
+  --teal: #6f7d68;
+  --teal-dark: #464a3d;
+  --forest: #414437;
+  --moss: #c9ccbb;
+  --amber: #a89978;
+  --rose: #8b7b72;
+  --sand: #e7e6da;
+  --white: #fff;
+  --shadow: 0 18px 45px rgba(40, 42, 36, .10);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  letter-spacing: 0;
+}
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+.wrap {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(245, 243, 236, .92);
+  border-bottom: 1px solid rgba(217, 217, 205, .76);
+  backdrop-filter: blur(12px);
+}
+.nav-inner {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.brand {
+  font-weight: 600;
+  font-size: 18px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.nav-links a { text-decoration: none; }
+.nav-cta {
+  color: var(--white);
+  background: var(--teal);
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+.hero {
+  position: relative;
+  min-height: 680px;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  color: var(--ink);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, #c9ccbb 0%, #d6d8ca 56%, #ece9df 100%);
+  z-index: -2;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 170px;
+  background: linear-gradient(180deg, transparent, var(--paper));
+  z-index: -1;
+}
+.hero-content {
+  padding: 92px 0 118px;
+  max-width: 860px;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--forest);
+  margin-bottom: 22px;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  background: var(--amber);
+  border-radius: 999px;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.34;
+  font-weight: 600;
+}
+.hero-lead {
+  margin: 22px 0 0;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.9;
+  color: #55584d;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.btn-primary { background: var(--forest); color: var(--white); }
+.btn-secondary { background: rgba(255,255,255,.42); color: var(--forest); border: 1px solid rgba(65,68,55,.24); }
+
+.section {
+  padding: 74px 0;
+}
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 32px;
+}
+.kicker {
+  color: var(--teal);
+  font-size: 12px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  letter-spacing: .14em;
+  margin-bottom: 12px;
+}
+h2 {
+  margin: 0;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.36;
+  font-weight: 600;
+  max-width: 1120px;
+}
+.section-text {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 15px;
+  max-width: 760px;
+}
+.title-line {
+  display: block;
+}
+.mobile-title-line {
+  display: none;
+}
+
+.problem-grid,
+.price-grid,
+.flow-grid {
+  display: grid;
+  gap: 18px;
+}
+.problem-grid { grid-template-columns: repeat(3, 1fr); }
+.problem {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+}
+.problem b {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.problem-mark {
+  display: inline-block;
+  margin-right: 4px;
+  font-family: "Noto Sans JP", sans-serif;
+}
+.problem p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 14px;
+}
+
+.work-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(40,42,36,.05);
+}
+.works-list {
+  display: grid;
+  gap: 22px;
+}
+.work-card.work-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, .75fr);
+  align-items: stretch;
+}
+.work-image {
+  background: #dfe1d3;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.work-body {
+  padding: 34px;
+  align-self: start;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 27px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: var(--forest);
+  color: var(--white);
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.work-body h3 {
+  margin: 14px 0 10px;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.55;
+  font-weight: 600;
+}
+.work-body p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.ba-row {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+.ba-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.ba-label {
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  color: var(--white);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  background: #8a8378;
+}
+.ba-label.after { background: var(--teal); }
+.ba-item img {
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
+  background: #e6e2d8;
+  border-radius: 6px;
+}
+
+.price-grid { grid-template-columns: repeat(3, 1fr); }
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 26px;
+  position: relative;
+}
+.price-card.recommend {
+  border: 2px solid var(--forest);
+  box-shadow: var(--shadow);
+}
+.price-label {
+  color: var(--rose);
+  font-size: 12px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  letter-spacing: .12em;
+  margin-bottom: 12px;
+}
+.price-card h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 12px;
+  color: var(--teal-dark);
+}
+.price strong { font-size: 34px; letter-spacing: 0; }
+.price span {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.price-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 14px;
+}
+.price-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+  color: #44463e;
+  font-size: 14px;
+}
+.price-card li {
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.55;
+}
+.price-card li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  position: absolute;
+  left: 0;
+  top: .55em;
+}
+.option {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 8px;
+  background: var(--sand);
+  color: #514d43;
+  line-height: 1.75;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+.service-mini {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+.service-mini b {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.service-mini p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+.service-price {
+  display: block;
+  margin-top: 10px;
+  color: var(--teal-dark);
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.flow-grid { grid-template-columns: repeat(4, 1fr); }
+.flow {
+  border-top: 4px solid var(--forest);
+  background: var(--white);
+  padding: 22px;
+  border-radius: 0 0 8px 8px;
+}
+.flow-num {
+  color: var(--amber);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.flow b { display: block; margin-bottom: 8px; font-weight: 600; }
+.flow p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.cta {
+  background: #333529;
+  color: var(--white);
+  padding: 76px 0;
+}
+.cta-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+}
+.cta h2 { color: var(--white); }
+.cta p {
+  color: rgba(255,255,255,.78);
+  line-height: 1.85;
+  margin: 16px 0 0;
+}
+.cta .btn-secondary {
+  border-color: rgba(255,255,255,.24);
+  background: transparent;
+}
+.footer {
+  padding: 28px 0;
+  color: #746c64;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { min-height: 620px; }
+  .section-head,
+  .work-card.work-row,
+  .cta-box {
+    grid-template-columns: 1fr;
+  }
+  .problem-grid,
+  .price-grid,
+  .service-grid,
+  .flow-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap { width: min(100% - 28px, 1120px); }
+  .nav-inner { min-height: 58px; }
+  .brand { font-size: 16px; }
+  .nav-cta { padding: 9px 12px; }
+  .hero::before {
+    background:
+      linear-gradient(135deg, #c9ccbb 0%, #d6d8ca 56%, #ece9df 100%);
+  }
+  .hero-content { padding: 72px 0 96px; }
+  h1 {
+    font-size: clamp(36px, 10.2vw, 44px);
+    line-height: 1.48;
+  }
+  .title-line { display: none; }
+  .mobile-title-line { display: block; }
+  .hero-lead {
+    font-size: 16px;
+    line-height: 2;
+  }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .section { padding: 56px 0; }
+  .problem-grid,
+  .price-grid,
+  .service-grid,
+  .flow-grid {
+    grid-template-columns: 1fr;
+  }
+  .work-body { padding: 22px; }
+  .work-image { min-height: 220px; padding: 12px; }
+  .cta-box { align-items: start; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">っぽくする屋。</div>
+    <div class="nav-links">
+      <a href="#works">実績</a>
+      <a href="#price">料金</a>
+      <a href="#flow">流れ</a>
+      <a class="nav-cta" href="https://lin.ee/SwFMUZaY" target="_blank" rel="noopener noreferrer">LINEで相談</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-content">
+    <div class="eyebrow">っぽくする屋。</div>
+    <h1>
+      <span class="title-line">もったいない見せ方を、</span>
+      <span class="title-line">選ばれる見せ方へ。</span>
+      <span class="mobile-title-line">もったいない</span>
+      <span class="mobile-title-line">見せ方を、</span>
+      <span class="mobile-title-line">選ばれる</span>
+      <span class="mobile-title-line">見せ方へ。</span>
+    </h1>
+    <p class="hero-lead">
+      あなたのお店やサービス、ちゃんと伝わっていますか？
+      SNS・チラシ・メニュー表・料金表を、「伝わる」「信頼される」「問い合わせにつながる」見せ方に整えます。
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#price">料金を見る</a>
+      <a class="btn btn-secondary" href="#works">制作実績を見る</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">PROBLEM</div>
+          <h2>デザインより先に、「伝わり方」で損していませんか。</h2>
+        </div>
+        <p class="section-text">
+          きれいに作ることより大切なのは、誰に・何を・なぜ選ぶべきかが、正しい順番で伝わること。
+          見た目だけ整えても、伝わらなければ問い合わせは増えません。
+        </p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem">
+          <b><span class="problem-mark">😶</span>何屋かわからない</b>
+          <p>プロフィールや投稿、チラシを見ても、サービス内容や強みが一瞬で伝わらない。</p>
+        </div>
+        <div class="problem">
+          <b><span class="problem-mark">🎨</span>見た目がバラバラ</b>
+          <p>色・フォント・写真の雰囲気がバラつき、信頼感もブランド感も出てこない。</p>
+        </div>
+        <div class="problem">
+          <b><span class="problem-mark">📭</span>問い合わせにつながらない</b>
+          <p>見た人が「次に何をすればいいか」わからず、予約も相談も生まれにくい。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="works">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">WORKS</div>
+          <h2>情報整理からデザインまで、まるごと整えます。</h2>
+        </div>
+        <p class="section-text">
+          印刷物・SNS画像・ヘッダー・キャンペーンバナーなど、集客の入口になる「見せ方」を、一貫して制作しています。
+        </p>
+      </div>
+
+      <div class="works-list">
+        <article class="work-card work-row">
+          <div class="work-image">
+            <img src="portfolio_assets/hifin_life_guide.png" alt="株式会社 Hi-fin. 生活ガイド広告">
+          </div>
+          <div class="work-body">
+            <span class="tag">PRINT DESIGN</span>
+            <h3>株式会社 Hi-fin. ／ 生活ガイド広告</h3>
+            <p>
+              サービス内容・安心材料・問い合わせ導線を1枚に集約。
+              限られた紙面の中でも「何を頼めるか」が伝わる構成に整えました。
+            </p>
+          </div>
+        </article>
+
+        <article class="work-card work-row">
+          <div class="work-image">
+            <div class="ba-row">
+              <div class="ba-item">
+                <div class="ba-label">Before</div>
+                <img src="portfolio_assets/banner_before.png" alt="美容系キャンペーンバナー Before">
+              </div>
+              <div class="ba-item">
+                <div class="ba-label after">After</div>
+                <img src="portfolio_assets/banner_after.png" alt="美容系キャンペーンバナー After">
+              </div>
+            </div>
+          </div>
+          <div class="work-body">
+            <span class="tag">BEFORE / AFTER</span>
+            <h3>美容系キャンペーンバナー改善</h3>
+            <p>訴求軸を絞ることで、季節感・価格・キャンペーン感が一目で伝わるビジュアルへ。</p>
+          </div>
+        </article>
+
+        <article class="work-card work-row">
+          <div class="work-image">
+            <img src="portfolio_assets/coconala_header.png" alt="っぽくする屋。サービスヘッダー">
+          </div>
+          <div class="work-body">
+            <span class="tag">BRAND HEADER</span>
+            <h3>サービスヘッダー制作</h3>
+            <p>世界観と提供価値を1枚で伝える、出品・プロフィール用ヘッダーを制作。</p>
+          </div>
+        </article>
+
+        <article class="work-card work-row">
+          <div class="work-image">
+            <img src="portfolio_assets/hifin_pocket_tissue_current.png" alt="株式会社 Hi-fin. ポケットティッシュ広告">
+          </div>
+          <div class="work-body">
+            <span class="tag">POCKET TISSUE</span>
+            <h3>株式会社 Hi-fin. ／ ポケットティッシュ広告</h3>
+            <p>
+              手に取った瞬間にサービスと連絡先が伝わるよう、小さな面積の中で情報の優先順位を徹底的に整理しました。
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="price">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">PRICE</div>
+          <h2>小さく始めて、少しずつ整えていけます。</h2>
+        </div>
+        <p class="section-text">
+          すべて初期価格です。実績公開・レビューにご協力いただける場合は、内容に応じて調整します。
+        </p>
+      </div>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <div class="price-label">ENTRY</div>
+          <h3>プロフィール診断＋改善案</h3>
+          <div class="price"><strong>¥8,000</strong><span>税込</span></div>
+          <p>Instagramプロフィールのもったいないポイントを診断し、そのまま使える改善文までお渡しします。実績公開OKの方は¥5,000で対応します。</p>
+          <ul>
+            <li>診断レポートPDF</li>
+            <li>プロフィール文3案</li>
+            <li>納期目安: 3営業日</li>
+          </ul>
+        </article>
+
+        <article class="price-card recommend">
+          <div class="price-label">STANDARD</div>
+          <h3>SNS投稿テンプレートセット</h3>
+          <div class="price"><strong>¥30,000</strong><span>税込〜</span></div>
+          <p>ブランドに合わせた投稿テンプレートを制作。Canvaでご自身でも更新・運用できる形で納品します。</p>
+          <ul>
+            <li>投稿テンプレート5枚</li>
+            <li>カラー・フォント整理</li>
+            <li>Canva共有リンク納品</li>
+            <li>納期目安: 5〜7営業日</li>
+          </ul>
+        </article>
+
+        <article class="price-card">
+          <div class="price-label">TOTAL</div>
+          <h3>見せ方まるごとリニューアル</h3>
+          <div class="price"><strong>¥98,000</strong><span>税込〜</span></div>
+          <p>SNS・プロフィール・メニュー表・料金表まで、必要なものをまとめて整えるフルセットです。</p>
+          <ul>
+            <li>プロフィール改善</li>
+            <li>投稿テンプレート7枚</li>
+            <li>メニュー表 or 料金表1点</li>
+            <li>納期目安: 10〜14営業日</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="option">
+        継続改善サポートは月額 ¥50,000〜¥150,000。
+        店舗・法人向け見せ方改善パッケージは個別お見積もりで対応します。
+      </div>
+
+      <div class="section-head" style="margin-top:42px">
+        <div>
+          <div class="kicker">OTHER SERVICE</div>
+          <h2>その他のご依頼</h2>
+        </div>
+        <p class="section-text">
+          LP制作、ロゴデザイン、名刺デザイン、印刷物・販促ツール制作も承ります。
+          必要な範囲や使い道に合わせて、最適な内容をご提案します。まずは今のご状況をお聞かせください。
+        </p>
+      </div>
+      <div class="service-grid">
+        <div class="service-mini">
+          <b>LP制作</b>
+          <p>サービスや商品を「伝わる順番」で見せる、問い合わせにつながるLPを制作します。<span class="service-price">¥120,000〜</span></p>
+        </div>
+        <div class="service-mini">
+          <b>ロゴデザイン</b>
+          <p>ブランドの世界観や強みを1つのマークに落とし込みます。<span class="service-price">¥50,000〜</span></p>
+        </div>
+        <div class="service-mini">
+          <b>名刺デザイン</b>
+          <p>渡した瞬間に印象が残る、あなたらしい名刺を整えます。<span class="service-price">¥20,000〜</span></p>
+        </div>
+        <div class="service-mini">
+          <b>印刷物・販促ツール</b>
+          <p>チラシ・広告・ポケットティッシュなど、手に取る媒体の見せ方を整えます。<span class="service-price">¥30,000〜</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="flow">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">FLOW</div>
+          <h2>進め方はシンプルです。</h2>
+        </div>
+        <p class="section-text">
+          文章がまとまっていなくても大丈夫。
+          サービスの内容や強みを、一緒に整理するところから始めます。
+        </p>
+      </div>
+      <div class="flow-grid">
+        <div class="flow">
+          <div class="flow-num">01</div>
+          <b>相談</b>
+          <p>目的・業種・今の見せ方の課題を確認します。</p>
+        </div>
+        <div class="flow">
+          <div class="flow-num">02</div>
+          <b>設計</b>
+          <p>誰に何を伝えるか、構成と優先順位を整理します。</p>
+        </div>
+        <div class="flow">
+          <div class="flow-num">03</div>
+          <b>制作</b>
+          <p>Canvaを中心に、使いやすい形でデザインします。</p>
+        </div>
+        <div class="flow">
+          <div class="flow-num">04</div>
+          <b>納品</b>
+          <p>PNG、PDF、Canvaリンクなど用途に合わせて納品します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="cta" id="contact">
+  <div class="wrap cta-box">
+    <div>
+          <div class="kicker">CONTACT</div>
+          <h2>まずは、今の見せ方を見せてください。</h2>
+      <p>
+        投稿・チラシ・メニュー表・料金表・プロフィールなど、今あるものをもとに、
+        どこから直すと一番効果が出るかを整理します。診断だけでも、気軽にご相談ください。
+      </p>
+    </div>
+    <div class="hero-actions" style="margin:0">
+      <a class="btn btn-primary" href="https://lin.ee/SwFMUZaY" target="_blank" rel="noopener noreferrer">LINEで無料相談する</a>
+      <a class="btn btn-secondary" href="#price">料金に戻る</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">っぽくする屋。 by siam. / 掲載実績の一部は許可範囲に応じて匿名・加工しています。</div>
+</footer>
+</body>
+</html>
